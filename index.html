@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re3el4u - Application TikTok</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #ff0050 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255, 0, 80, 0.4);
+            padding: 50px;
+            max-width: 900px;
+            width: 100%;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            border-left: 5px solid #ff0050;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #ff0050;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .info-box:hover {
+            border-color: #ff0050;
+            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .info-box strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .document-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .document-list li {
+            padding: 18px;
+            margin: 12px 0;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+            font-weight: 500;
+        }
+
+        .document-list li:hover {
+            transform: translateX(10px);
+            border-color: #ff0050;
+            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+        }
+
+        .document-list li::before {
+            content: "📄";
+            margin-right: 15px;
+            font-size: 1.5em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 3px solid #e0e0e0;
+            color: #666;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+        }
+
+        a {
+            color: #ff0050;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #ff0050 0%, #000000 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🎵</div>
+        <h1>RE3EL4U</h1>
+        <p class="subtitle">Application Officielle TikTok Integration</p>
+        
+        <div class="status-badge">✓ Site Vérifié et Opérationnel</div>
+
+        <div class="section">
+            <h2>📱 À propos de l'application</h2>
+            <div class="info-box">
+                <p><strong>Nom de l'application :</strong> Re3el4u</p>
+                <p><strong>Type :</strong> Application Web / Service API</p>
+                <p><strong>Plateforme :</strong> TikTok Developer Platform</p>
+                <p><strong>Statut :</strong> Actif et en développement</p>
+                <p><strong>Hébergement :</strong> Cloudflare Pages (HTTPS sécurisé)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📑 Documents légaux et techniques</h2>
+            <ul class="document-list">
+                <li><a href="/privacy.html">Politique de confidentialité</a></li>
+                <li><a href="/terms.html">Conditions générales d'utilisation</a></li>
+                <li><a href="/contact.html">Page de contact</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔗 Informations techniques</h2>
+            <div class="info-box">
+                <p><strong>URL de callback :</strong> https://re3el4u.pages.dev/callback</p>
+                <p><strong>URL de redirection :</strong> https://re3el4u.pages.dev/auth</p>
+                <p><strong>Domaine vérifié :</strong> re3el4u.pages.dev</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📧 Contact</h2>
+            <div class="contact-info">
+                <p><strong>Email de support :</strong> <a href="mailto:support@re3el4u.com">support@re3el4u.com</a></p>
+                <p><strong>Documentation :</strong> Disponible sur demande</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>© 2025 Re3el4u</strong></p>
+            <p>Tous droits réservés | Hébergé de manière sécurisée sur Cloudflare Pages</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">🔒 Connexion HTTPS sécurisée | ⚡ Powered by Cloudflare</p>
+        </div>
+    </div>
+</body>
+</html>
