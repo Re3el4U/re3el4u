@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Re3el4u</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #ff0050 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255, 0, 80, 0.4);
+            padding: 50px;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #ff0050;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ff0050;
+        }
+
+        .contact-section h2 {
+            color: #000;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+        }
+
+        .contact-item .icon {
+            font-size: 2em;
+            margin-right: 20px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .contact-item .info {
+            flex: 1;
+        }
+
+        .contact-item .info strong {
+            display: block;
+            color: #ff0050;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .contact-item .info a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item .info a:hover {
+            color: #ff0050;
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background: #ff0050;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .back-link:hover {
+            background: #000;
+            transform: scale(1.02);
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #ff0050 0%, #000000 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Contactez-nous</h1>
+        <p class="subtitle">Nous sommes là pour vous aider</p>
+
+        <div class="contact-section">
+            <h2>Informations de contact</h2>
+            
+            <div class="contact-item">
+                <div class="icon">✉️</div>
+                <div class="info">
+                    <strong>Email de support</strong>
+                    <a href="mailto:support@re3el4u.com">support@re3el4u.com</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="icon">💼</div>
+                <div class="info">
+                    <strong>Email professionnel</strong>
+                    <a href="mailto:contact@re3el4u.com">contact@re3el4u.com</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="icon">🔧</div>
+                <div class="info">
+                    <strong>Support technique</strong>
+                    <a href="mailto:tech@re3el4u.com">tech@re3el4u.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Horaires de réponse</h2>
+            <div class="contact-item">
+                <div class="icon">🕐</div>
+                <div class="info">
+                    <strong>Temps de réponse moyen</strong>
+                    24-48 heures (jours ouvrables)
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <p><strong>🔒 Vos données sont sécurisées</strong></p>
+            <p>Toutes les communications sont chiffrées et traitées de manière confidentielle conformément à notre politique de confidentialité.</p>
+        </div>
+
+        <a href="/" class="back-link">← Retour à l'accueil</a>
+    </div>
+</body>
+</html>
