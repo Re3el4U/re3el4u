@@ -1,99 +1,338 @@
-<!-- Section du bouton TikTok modifiée -->
-<div class="cta-section" style="text-align: center; padding: 4rem 0;">
-    <h2 style="font-size: 2rem; margin-bottom: 2rem;">Lancer l'Agent IA TikTok</h2>
-    <button id="tiktokAgentBtn" class="tiktok-btn">
-        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; margin-right: 10px;">
-            <path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-        </svg>
-        Lancer l'Agent TikTok
-    </button>
-    <div id="statusMessage" style="margin-top: 1rem; font-size: 1rem; color: #a0a9c0;"></div>
-</div>
-
-<style>
-.tiktok-btn {
-    background: linear-gradient(135deg, #ff0050, #00f2ea);
-    color: white;
-    border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 30px rgba(255, 0, 80, 0.3);
-}
-
-.tiktok-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(255, 0, 80, 0.4);
-}
-
-.tiktok-btn:active {
-    transform: translateY(-1px);
-}
-
-.tiktok-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-#statusMessage.success {
-    color: #4caf50;
-}
-
-#statusMessage.error {
-    color: #ff6b35;
-}
-</style>
-
-<script>
-document.getElementById('tiktokAgentBtn').addEventListener('click', async function() {
-    const btn = this;
-    const statusMsg = document.getElementById('statusMessage');
-    
-    // Désactiver le bouton pendant l'exécution
-    btn.disabled = true;
-    btn.textContent = 'Lancement en cours...';
-    statusMsg.textContent = 'Démarrage de l\'agent IA TikTok...';
-    statusMsg.className = '';
-    
-    try {
-        // Remplacez cette URL par votre URL webhook Pipedream
-        const webhookUrl = 'https://eoeaqtjv9vp8xue.m.pipedream.net';
-        
-        // Déclencher le workflow Pipedream
-        const response = await fetch(webhookUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                source: 're3el4u_website',
-                timestamp: new Date().toISOString(),
-                action: 'trigger_tiktok_publisher'
-            })
-        });
-        
-        if (response.ok) {
-            statusMsg.textContent = '✅ Agent IA TikTok lancé avec succès !';
-            statusMsg.className = 'success';
-        } else {
-            throw new Error('Échec du lancement');
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité - Re3el4u</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    } catch (error) {
-        statusMsg.textContent = '❌ Erreur lors du lancement de l\'agent. Veuillez réessayer.';
-        statusMsg.className = 'error';
-        console.error('Erreur:', error);
-    } finally {
-        // Réactiver le bouton après 3 secondes
-        setTimeout(() => {
-            btn.disabled = false;
-            btn.innerHTML = '<svg viewBox="0 0 24 24" style="width: 24px; height: 24px; margin-right: 10px;"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>Lancer l\'Agent TikTok';
-        }, 3000);
-    }
-});
-</script>
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #1a1d2e;
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 29, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff6b35;
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 80px 40px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1d2e 0%, #2d1b3d 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .date {
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .policy-card {
+            background: #252841;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .policy-card h2 {
+            color: #ff6b35;
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .policy-card h2::before {
+            content: '▸';
+            color: #ff6b35;
+        }
+
+        .policy-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .policy-card ul {
+            margin: 16px 0;
+            padding-left: 30px;
+        }
+
+        .policy-card li {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .policy-card strong {
+            color: #ff6b35;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 133, 85, 0.1) 100%);
+            border-left: 4px solid #ff6b35;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff6b35;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 40px;
+        }
+
+        .back-button:hover {
+            background: #ff8555;
+            transform: translateX(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1117;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">re3el4u</a>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#about">À propos</a></li>
+                <li><a href="/privacy.html">Confidentialité</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1><span class="gradient-text">🔒 Politique de Confidentialité</span></h1>
+        <p class="date">Dernière mise à jour : 4 octobre 2025</p>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="policy-card">
+            <h2>1. Introduction</h2>
+            <p>
+                Bienvenue sur Re3el4u. Nous respectons votre vie privée et nous nous engageons à protéger vos données personnelles. 
+                Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations 
+                lorsque vous utilisez notre application en lien avec TikTok.
+            </p>
+        </div>
+
+        <div class="policy-card">
+            <h2>2. Données Collectées</h2>
+            <p>Dans le cadre de l'utilisation de notre application avec TikTok, nous pouvons collecter les types de données suivants :</p>
+            <ul>
+                <li><strong>Informations de profil TikTok :</strong> nom d'utilisateur, photo de profil, identifiant utilisateur</li>
+                <li><strong>Données d'utilisation :</strong> interactions avec l'application, préférences</li>
+                <li><strong>Données techniques :</strong> adresse IP, type de navigateur, système d'exploitation</li>
+                <li><strong>Cookies et technologies similaires</strong> pour améliorer votre expérience</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2>3. Utilisation des Données</h2>
+            <p>Nous utilisons vos données pour :</p>
+            <ul>
+                <li>Fournir et améliorer nos services</li>
+                <li>Personnaliser votre expérience utilisateur</li>
+                <li>Communiquer avec vous concernant notre service</li>
+                <li>Assurer la sécurité et prévenir la fraude</li>
+                <li>Respecter nos obligations légales</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2>4. Partage des Données</h2>
+            <div class="highlight-box">
+                <p><strong>⚠️ Important :</strong> Nous ne vendons JAMAIS vos données personnelles.</p>
+            </div>
+            <p>Nous pouvons partager vos informations uniquement dans les cas suivants :</p>
+            <ul>
+                <li>Avec TikTok, conformément à leur politique de confidentialité</li>
+                <li>Avec des prestataires de services qui nous aident à fournir notre application</li>
+                <li>Si requis par la loi ou pour protéger nos droits légaux</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2>5. Sécurité des Données</h2>
+            <p>
+                Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles appropriées pour protéger vos données contre 
+                tout accès non autorisé, perte ou divulgation. Notre site est hébergé sur Cloudflare Pages avec une connexion HTTPS sécurisée 
+                et un chiffrement de niveau entreprise.
+            </p>
+        </div>
+
+        <div class="policy-card">
+            <h2>6. Vos Droits</h2>
+            <p>Conformément au RGPD et aux lois sur la protection des données, vous disposez des droits suivants :</p>
+            <ul>
+                <li><strong>Droit d'accès :</strong> obtenir une copie de vos données personnelles</li>
+                <li><strong>Droit de rectification :</strong> corriger vos données inexactes</li>
+                <li><strong>Droit à l'effacement :</strong> demander la suppression de vos données</li>
+                <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
+                <li><strong>Droit à la portabilité :</strong> recevoir vos données dans un format structuré</li>
+            </ul>
+        </div>
+
+        <div class="policy-card">
+            <h2>7. Conservation des Données</h2>
+            <p>
+                Nous conservons vos données personnelles uniquement pendant la durée nécessaire aux fins pour lesquelles elles ont été collectées, 
+                ou conformément aux exigences légales. Les données inactives sont supprimées automatiquement après une période définie.
+            </p>
+        </div>
+
+        <div class="policy-card">
+            <h2>8. Cookies</h2>
+            <p>
+                Notre application peut utiliser des cookies pour améliorer votre expérience. Vous pouvez configurer votre navigateur pour 
+                refuser les cookies, mais cela peut affecter certaines fonctionnalités de l'application. Nous utilisons uniquement des cookies 
+                essentiels et analytiques.
+            </p>
+        </div>
+
+        <div class="policy-card">
+            <h2>9. Modifications de Cette Politique</h2>
+            <p>
+                Nous pouvons mettre à jour cette politique de confidentialité périodiquement. Nous vous informerons de tout changement 
+                significatif en publiant la nouvelle politique sur cette page avec une date de mise à jour révisée. Votre utilisation 
+                continue du service après les modifications constitue votre acceptation de la nouvelle politique.
+            </p>
+        </div>
+
+        <div class="policy-card">
+            <h2>10. Contact</h2>
+            <p>
+                Pour toute question concernant cette politique de confidentialité ou pour exercer vos droits, 
+                veuillez nous contacter à :
+            </p>
+            <div class="highlight-box">
+                <p><strong>📧 Email :</strong> support@re3el4u.com</p>
+                <p><strong>🌐 Site Web :</strong> https://re3el4u.pages.dev</p>
+            </div>
+        </div>
+
+        <center>
+            <a href="/" class="back-button">
+                ← Retour à l'accueil
+            </a>
+        </center>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Re3el4u. Tous droits réservés. | Propulsé par Cloudflare Pages 🔒</p>
+    </footer>
+</body>
+</html>
