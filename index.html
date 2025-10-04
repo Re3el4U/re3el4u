@@ -3,77 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re3el4u - Application TikTok</title>
     <title>Re3el4u - TikTok Integration Platform</title>
-    <title>Re3el4u - Plateforme d'intégration TikTok</title>
     <style>
         * {
             margin: 0;
-@@ -71,6 +71,11 @@
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
+@@ -12,216 +12,503 @@
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #ff0050 100%);
+            min-height: 100vh;
+            display: flex;
             justify-content: center;
-        }
-
-        .cta-button:hover {
-@@ -79,6 +84,34 @@
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-        }
-
-        /* TikTok Button */
-        .tiktok-button {
-            background: #000;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #1a1d2e;
             color: #fff;
-            padding: 14px 32px;
+            line-height: 1.6;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255, 0, 80, 0.4);
+            padding: 50px;
+            max-width: 900px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            animation: fadeIn 0.6s ease-in;
+            background: rgba(26, 29, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 4em;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff6b35;
+            letter-spacing: -1px;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .cta-button {
+            background: #ff6b35;
+            color: #fff;
+            padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid #fff;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
         }
 
-        .tiktok-button:hover {
-            background: #fff;
-            color: #000;
+        .cta-button:hover {
+            background: #ff8555;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
-        }
-
-        .tiktok-button svg {
-            margin-right: 10px;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
-@@ -126,6 +159,14 @@
-            margin-bottom: 40px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 40px;
-@@ -224,13 +265,6 @@
+            padding: 120px 40px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1d2e 0%, #2d1b3d 100%);
+            position: relative;
             overflow: hidden;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+        .hero .gradient-text {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            border-left: 5px solid #ff0050;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Services Section */
+        .services {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            color: #ff0050;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .info-box:hover {
+            border-color: #ff0050;
+            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+        .section-header p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .info-box p {
+            margin: 10px 0;
+            line-height: 1.6;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-box strong {
+            color: #000;
+            font-weight: 600;
+        .service-card {
+            background: #252841;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-list {
+            list-style: none;
+            padding: 0;
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35 0%, #ff8555 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .service-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 40px;
+            background: #252841;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .document-list li {
+            padding: 18px;
+            margin: 12px 0;
+            background: white;
+            border-radius: 10px;
         .about-image img {
             width: 100%;
             height: 500px;
@@ -84,61 +298,219 @@
         .about-content h2 {
             font-size: 48px;
             margin-bottom: 24px;
-@@ -351,6 +385,11 @@
+        }
+
+        .about-content p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 24px;
+            font-size: 18px;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 24px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+            font-weight: 500;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .document-list li:hover {
+            transform: translateX(10px);
+            border-color: #ff0050;
+            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+        .feature-content h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .document-list li::before {
+            content: "📄";
+            margin-right: 15px;
+            font-size: 1.5em;
+        .feature-content p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 3px solid #e0e0e0;
+            color: #666;
+        /* Footer */
+        footer {
+            background: #0f1117;
+            padding: 60px 40px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 15px 0;
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+        }
+
+        a {
+            color: #ff0050;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #000;
+            text-decoration: underline;
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #ff0050 0%, #000000 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid #10b981;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: underline;
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .nav-links {
                 display: none;
-            }
-
-            .button-group {
-                flex-direction: column;
-                align-items: center;
             }
         }
     </style>
 </head>
-@@ -360,65 +399,75 @@
+<body>
+    <div class="container">
+        <div class="logo">🎵</div>
+        <h1>RE3EL4U</h1>
+        <p class="subtitle">Application Officielle TikTok Integration</p>
+        
+        <div class="status-badge">✓ Site Vérifié et Opérationnel</div>
+
+        <div class="section">
+            <h2>📱 À propos de l'application</h2>
+            <div class="info-box">
+                <p><strong>Nom de l'application :</strong> Re3el4u</p>
+                <p><strong>Type :</strong> Application Web / Service API</p>
+                <p><strong>Plateforme :</strong> TikTok Developer Platform</p>
+                <p><strong>Statut :</strong> Actif et en développement</p>
+                <p><strong>Hébergement :</strong> Cloudflare Pages (HTTPS sécurisé)</p>
+            </div>
+    <!-- Navigation -->
+    <nav>
         <div class="nav-container">
             <div class="logo">re3el4u</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#home">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="/privacy.html">Privacy</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="/privacy.html">Confidentialité</a></li>
                 <li><a href="/contact.html">Contact</a></li>
             </ul>
             <a href="#contact" class="cta-button">Get Started</a>
-            <a href="#contact" class="cta-button">Commencer</a>
         </div>
     </nav>
 
+        <div class="section">
+            <h2>📑 Documents légaux et techniques</h2>
+            <ul class="document-list">
+                <li><a href="/privacy.html">Politique de confidentialité</a></li>
+                <li><a href="/terms.html">Conditions générales d'utilisation</a></li>
+                <li><a href="/contact.html">Page de contact</a></li>
+            </ul>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>
                 Connect & Grow<br>
                 <span class="gradient-text">With TikTok</span>
-                Connectez & Grandissez<br>
-                <span class="gradient-text">Avec TikTok</span>
             </h1>
             <p>Professional TikTok API integration platform for seamless authentication, content sharing, and enhanced user engagement.</p>
             <a href="#services" class="cta-button">Explore Features</a>
             <div class="status-badge">✓ Verified & Active Platform</div>
-            <p>Plateforme professionnelle d'intégration API TikTok pour une authentification transparente, le partage de contenu et un engagement utilisateur amélioré.</p>
-            
-            <div class="button-group">
-                <a href="#services" class="cta-button">Découvrir les fonctionnalités</a>
-                <button id="tiktok-login-btn" class="tiktok-button">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                    </svg>
-                    Se connecter avec TikTok
-                </button>
-            </div>
-            
-            <div class="status-badge">✓ Plateforme Vérifiée et Active</div>
         </div>
     </section>
 
@@ -147,54 +519,48 @@
         <div class="section-header">
             <h2>What We Offer</h2>
             <p>Comprehensive TikTok integration solutions for your platform</p>
-            <h2>Nos Services</h2>
-            <p>Solutions complètes d'intégration TikTok pour votre plateforme</p>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">🔐</div>
                 <h3>TikTok Authentication</h3>
                 <p>Seamless login integration allowing users to authenticate using their TikTok accounts with secure OAuth 2.0 implementation.</p>
-                <h3>Authentification TikTok</h3>
-                <p>Intégration de connexion transparente permettant aux utilisateurs de s'authentifier avec leurs comptes TikTok via OAuth 2.0 sécurisé.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🎵</div>
                 <h3>Content Sharing</h3>
                 <p>Enable users to share and interact with TikTok content directly through your platform with full API support.</p>
-                <h3>Partage de Contenu</h3>
-                <p>Permettez aux utilisateurs de partager et d'interagir avec le contenu TikTok directement via votre plateforme avec un support API complet.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📊</div>
                 <h3>Analytics & Insights</h3>
                 <p>Access detailed analytics and user insights through TikTok's powerful data APIs for better decision making.</p>
-                <p>Accédez à des analyses détaillées et des insights utilisateurs via les puissantes API de données de TikTok pour de meilleures décisions.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">⚡</div>
                 <h3>Real-time Integration</h3>
                 <p>Fast, reliable, and real-time data synchronization with TikTok's platform for optimal user experience.</p>
-                <h3>Intégration Temps Réel</h3>
-                <p>Synchronisation de données rapide, fiable et en temps réel avec la plateforme TikTok pour une expérience utilisateur optimale.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🛡️</div>
                 <h3>Secure & Compliant</h3>
                 <p>Fully compliant with TikTok's API policies, GDPR, and industry security standards to protect user data.</p>
-                <h3>Sécurisé & Conforme</h3>
-                <p>Entièrement conforme aux politiques API de TikTok, RGPD et normes de sécurité du secteur pour protéger les données utilisateurs.</p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🚀</div>
                 <h3>Scalable Solutions</h3>
                 <p>Built to scale with your growing user base, ensuring consistent performance and reliability.</p>
-                <h3>Solutions Évolutives</h3>
-                <p>Conçu pour évoluer avec votre base d'utilisateurs croissante, garantissant des performances et une fiabilité constantes.</p>
             </div>
         </div>
     </section>
-@@ -427,11 +476,11 @@
+
+        <div class="section">
+            <h2>🔗 Informations techniques</h2>
+            <div class="info-box">
+                <p><strong>URL de callback :</strong> https://re3el4u.pages.dev/callback</p>
+                <p><strong>URL de redirection :</strong> https://re3el4u.pages.dev/auth</p>
+                <p><strong>Domaine vérifié :</strong> re3el4u.pages.dev</p>
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-content">
@@ -203,22 +569,25 @@
                 <p>Our platform provides robust, secure, and compliant solutions for authentication, content management, and user engagement through TikTok's official APIs.</p>
                 <p>With enterprise-grade security and full HTTPS encryption via Cloudflare Pages, your data and your users' data remain protected at all times.</p>
                 <a href="#contact" class="cta-button">Learn More</a>
-                <h2>À Propos de Re3el4u</h2>
-                <p>Re3el4u est une plateforme professionnelle d'intégration API TikTok conçue pour aider les entreprises et développeurs à se connecter facilement avec l'écosystème TikTok.</p>
-                <p>Notre plateforme fournit des solutions robustes, sécurisées et conformes pour l'authentification, la gestion de contenu et l'engagement utilisateur via les API officielles de TikTok.</p>
-                <p>Avec une sécurité de niveau entreprise et un chiffrement HTTPS complet via Cloudflare Pages, vos données et celles de vos utilisateurs restent protégées en permanence.</p>
-                <a href="#contact" class="cta-button">En savoir plus</a>
             </div>
             <div class="about-image">
                 <div style="width: 100%; height: 500px; background: linear-gradient(135deg, #ff6b35 0%, #2d1b3d 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 80px;">
-@@ -444,36 +493,36 @@
+                    🎵
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <div class="section">
+            <h2>📧 Contact</h2>
+            <div class="contact-info">
+                <p><strong>Email de support :</strong> <a href="mailto:support@re3el4u.com">support@re3el4u.com</a></p>
+                <p><strong>Documentation :</strong> Disponible sur demande</p>
     <!-- Features -->
     <section class="features">
         <div class="section-header">
             <h2>Why Choose Us</h2>
             <p>Built with developers and businesses in mind</p>
-            <h2>Pourquoi Nous Choisir</h2>
-            <p>Conçu pour les développeurs et les entreprises</p>
         </div>
         <div class="features-grid">
             <div class="feature-item">
@@ -226,8 +595,6 @@
                 <div class="feature-content">
                     <h3>Lightning Fast</h3>
                     <p>Optimized performance with Cloudflare's global CDN ensures your integrations run at maximum speed.</p>
-                    <h3>Ultra Rapide</h3>
-                    <p>Performances optimisées avec le CDN mondial de Cloudflare garantissant une vitesse maximale pour vos intégrations.</p>
                 </div>
             </div>
             <div class="feature-item">
@@ -235,8 +602,6 @@
                 <div class="feature-content">
                     <h3>Enterprise Security</h3>
                     <p>Bank-level encryption and security protocols to keep all data safe and compliant with regulations.</p>
-                    <h3>Sécurité Entreprise</h3>
-                    <p>Chiffrement et protocoles de sécurité de niveau bancaire pour garder toutes les données sûres et conformes aux réglementations.</p>
                 </div>
             </div>
             <div class="feature-item">
@@ -244,8 +609,6 @@
                 <div class="feature-content">
                     <h3>Mobile Optimized</h3>
                     <p>Fully responsive design ensures perfect experience across all devices and screen sizes.</p>
-                    <h3>Optimisé Mobile</h3>
-                    <p>Design entièrement responsive garantissant une expérience parfaite sur tous les appareils et tailles d'écran.</p>
                 </div>
             </div>
             <div class="feature-item">
@@ -253,84 +616,46 @@
                 <div class="feature-content">
                     <h3>Global Reach</h3>
                     <p>Hosted on Cloudflare's worldwide network for optimal performance in every region.</p>
-                    <h3>Portée Mondiale</h3>
-                    <p>Hébergé sur le réseau mondial de Cloudflare pour des performances optimales dans chaque région.</p>
                 </div>
             </div>
         </div>
-@@ -484,31 +533,64 @@
+    </section>
+
+        <div class="footer">
+            <p><strong>© 2025 Re3el4u</strong></p>
+            <p>Tous droits réservés | Hébergé de manière sécurisée sur Cloudflare Pages</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">🔒 Connexion HTTPS sécurisée | ⚡ Powered by Cloudflare</p>
+    <!-- Footer -->
+    <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Re3el4u</h3>
                 <p>Professional TikTok API integration platform for modern businesses and developers.</p>
                 <div class="status-badge">✓ Verified Platform</div>
-                <p>Plateforme professionnelle d'intégration API TikTok pour les entreprises et développeurs modernes.</p>
-                <div class="status-badge">✓ Plateforme Vérifiée</div>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="/">Home</a>
-                <h3>Liens Rapides</h3>
-                <a href="/">Accueil</a>
                 <a href="#services">Services</a>
                 <a href="#about">About</a>
-                <a href="#about">À propos</a>
                 <a href="/contact.html">Contact</a>
             </div>
             <div class="footer-section">
                 <h3>Legal</h3>
                 <a href="/privacy.html">Privacy Policy</a>
                 <a href="/terms.html">Terms of Service</a>
-                <h3>Légal</h3>
-                <a href="/privacy.html">Politique de Confidentialité</a>
-                <a href="/terms.html">Conditions d'Utilisation</a>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Email: support@re3el4u.com</p>
                 <p>Platform: TikTok for Developers</p>
                 <p>Hosting: Cloudflare Pages</p>
-                <p>Plateforme: TikTok for Developers</p>
-                <p>Hébergement: Cloudflare Pages</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© 2025 Re3el4u. All rights reserved. | Powered by Cloudflare Pages 🔒</p>
-            <p>© 2025 Re3el4u. Tous droits réservés. | Propulsé par Cloudflare Pages 🔒</p>
         </div>
+    </div>
     </footer>
-
-    <script>
-        // Configuration TikTok OAuth
-        const TIKTOK_CONFIG = {
-            client_key: 'VOTRE_CLIENT_KEY_ICI', // À remplacer par votre Client Key
-            redirect_uri: 'https://re3el4u.pages.dev/callback',
-            scope: 'user.info.basic,video.list', // Ajustez selon vos besoins
-        };
-
-        // Fonction de connexion TikTok
-        document.getElementById('tiktok-login-btn').addEventListener('click', function() {
-            // Générer un state aléatoire pour la sécurité
-            const state = Math.random().toString(36).substring(7);
-            sessionStorage.setItem('tiktok_auth_state', state);
-
-            // Construire l'URL d'autorisation TikTok
-            const authUrl = `https://www.tiktok.com/v2/auth/authorize/` +
-                `?client_key=${TIKTOK_CONFIG.client_key}` +
-                `&scope=${TIKTOK_CONFIG.scope}` +
-                `&response_type=code` +
-                `&redirect_uri=${encodeURIComponent(TIKTOK_CONFIG.redirect_uri)}` +
-                `&state=${state}`;
-
-            // Vérifier si la clé API est configurée
-            if (TIKTOK_CONFIG.client_key === 'VOTRE_CLIENT_KEY_ICI') {
-                alert('⚠️ Veuillez d\'abord configurer votre Client Key TikTok dans le code JavaScript.');
-                return;
-            }
-
-            // Rediriger vers TikTok pour l'authentification
-            window.location.href = authUrl;
-        });
-    </script>
 </body>
 </html>
