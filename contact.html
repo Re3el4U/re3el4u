@@ -12,180 +12,294 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #ff0050 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #1a1d2e;
+            color: #fff;
+            line-height: 1.6;
         }
 
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(255, 0, 80, 0.4);
-            padding: 50px;
-            max-width: 700px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
+            background: rgba(26, 29, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        h1 {
-            color: #ff0050;
-            margin-bottom: 15px;
-            font-size: 2.5em;
-            text-align: center;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 40px;
-            font-size: 1.1em;
-        }
-
-        .contact-section {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 25px 0;
-            border-left: 5px solid #ff0050;
-        }
-
-        .contact-section h2 {
-            color: #000;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .contact-item {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            transition: all 0.3s ease;
         }
 
-        .contact-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff6b35;
+            letter-spacing: -1px;
+            text-decoration: none;
         }
 
-        .contact-item .icon {
-            font-size: 2em;
-            margin-right: 20px;
-            min-width: 50px;
-            text-align: center;
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
         }
 
-        .contact-item .info {
-            flex: 1;
-        }
-
-        .contact-item .info strong {
-            display: block;
-            color: #ff0050;
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-
-        .contact-item .info a {
-            color: #000;
+        .nav-links a {
+            color: #fff;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s;
         }
 
-        .contact-item .info a:hover {
-            color: #ff0050;
-            text-decoration: underline;
+        .nav-links a:hover {
+            color: #ff6b35;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: #ff0050;
-            color: white;
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 80px 40px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #1a1d2e 0%, #2d1b3d 100%);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: #252841;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #ff6b35;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 8px;
+        }
+
+        .contact-card a {
+            color: #ff6b35;
             text-decoration: none;
-            border-radius: 10px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
-            width: 100%;
+            transition: color 0.3s;
         }
 
-        .back-link:hover {
-            background: #000;
-            transform: scale(1.02);
+        .contact-card a:hover {
+            color: #ff8555;
         }
 
+        /* Info Box */
         .info-box {
-            background: linear-gradient(135deg, #ff0050 0%, #000000 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 25px 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+            padding: 40px;
+            border-radius: 16px;
             text-align: center;
+            margin-top: 40px;
+        }
+
+        .info-box h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: #fff;
         }
 
         .info-box p {
-            margin: 10px 0;
-            line-height: 1.6;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #252841;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+
+        .back-button:hover {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            transform: translateX(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1117;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📧 Contactez-nous</h1>
-        <p class="subtitle">Nous sommes là pour vous aider</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">re3el4u</a>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#about">À propos</a></li>
+                <li><a href="/privacy.html">Confidentialité</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="contact-section">
-            <h2>Informations de contact</h2>
-            
-            <div class="contact-item">
-                <div class="icon">✉️</div>
-                <div class="info">
-                    <strong>Email de support</strong>
-                    <a href="mailto:support@re3el4u.com">support@re3el4u.com</a>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1><span class="gradient-text">📧 Contactez-nous</span></h1>
+        <p>Notre équipe est là pour vous aider</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3>Email de Support</h3>
+                <p>Pour toute question technique ou aide</p>
+                <a href="mailto:support@re3el4u.com">support@re3el4u.com</a>
             </div>
 
-            <div class="contact-item">
-                <div class="icon">💼</div>
-                <div class="info">
-                    <strong>Email professionnel</strong>
-                    <a href="mailto:contact@re3el4u.com">contact@re3el4u.com</a>
-                </div>
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>Email Professionnel</h3>
+                <p>Pour les partenariats et collaborations</p>
+                <a href="mailto:contact@re3el4u.com">contact@re3el4u.com</a>
             </div>
 
-            <div class="contact-item">
-                <div class="icon">🔧</div>
-                <div class="info">
-                    <strong>Support technique</strong>
-                    <a href="mailto:tech@re3el4u.com">tech@re3el4u.com</a>
-                </div>
+            <div class="contact-card">
+                <div class="contact-icon">🔧</div>
+                <h3>Support Technique</h3>
+                <p>Assistance pour l'intégration API</p>
+                <a href="mailto:tech@re3el4u.com">tech@re3el4u.com</a>
             </div>
         </div>
 
-        <div class="contact-section">
-            <h2>Horaires de réponse</h2>
-            <div class="contact-item">
-                <div class="icon">🕐</div>
-                <div class="info">
-                    <strong>Temps de réponse moyen</strong>
-                    24-48 heures (jours ouvrables)
-                </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">🕐</div>
+                <h3>Temps de Réponse</h3>
+                <p>Nous répondons généralement sous</p>
+                <p><strong style="color: #ff6b35;">24-48 heures</strong></p>
+                <p>(jours ouvrables)</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🌍</div>
+                <h3>Localisation</h3>
+                <p>Hébergé mondialement via</p>
+                <p><strong style="color: #ff6b35;">Cloudflare Pages</strong></p>
+                <p>Disponible 24/7</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Langues</h3>
+                <p>Support disponible en</p>
+                <p><strong style="color: #ff6b35;">Français & Anglais</strong></p>
+                <p>Documentation complète</p>
             </div>
         </div>
 
         <div class="info-box">
-            <p><strong>🔒 Vos données sont sécurisées</strong></p>
-            <p>Toutes les communications sont chiffrées et traitées de manière confidentielle conformément à notre politique de confidentialité.</p>
+            <h3>🔒 Vos Données Sont Sécurisées</h3>
+            <p>Toutes les communications sont chiffrées et traitées de manière confidentielle conformément à notre politique de confidentialité. Nous ne partageons jamais vos informations avec des tiers sans votre consentement explicite.</p>
         </div>
 
-        <a href="/" class="back-link">← Retour à l'accueil</a>
-    </div>
+        <center>
+            <a href="/" class="back-button">
+                ← Retour à l'accueil
+            </a>
+        </center>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Re3el4u. Tous droits réservés. | Propulsé par Cloudflare Pages 🔒</p>
+    </footer>
 </body>
 </html>
